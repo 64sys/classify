@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="gpl.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)">
+  <g
+     aria-label="GPL"
+     transform="scale(0.95649149,1.0454876)"
+     id="text842"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.2541px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.581352">
+    <path
+       d="m 16.293324,24.78143 h 0.209287 c 0.488336,0 0.767385,-0.209287 0.767385,-0.604606 0,-0.372066 -0.255795,-0.581353 -0.767385,-0.581353 h -4.511296 c -0.51159,0 -0.767385,0.186033 -0.767385,0.581353 0,0.395319 0.255795,0.604606 0.767385,0.604606 h 3.092796 v 3.209066 c -1.278976,0.581353 -1.999853,0.744132 -3.185812,0.744132 -3.3020824,0 -5.2786809,-1.837074 -5.2786809,-4.883362 v -1.674295 c 0,-1.278975 0.6278607,-2.697476 1.627787,-3.62764 0.8604017,-0.813893 1.8603279,-1.185959 3.1393039,-1.185959 1.999852,0 3.604385,0.860402 3.720656,1.976599 0.02325,0.465082 0.209287,0.674369 0.581352,0.674369 0.39532,0 0.604607,-0.255795 0.604607,-0.720877 v -2.092869 c 0,-0.488337 -0.186033,-0.720878 -0.604607,-0.720878 -0.395319,0 -0.604606,0.232541 -0.604606,0.720878 v 0.06976 c -1.023181,-0.720877 -2.278902,-1.092943 -3.74391,-1.092943 -3.3253369,0 -5.9297962,2.627713 -5.9297962,5.999558 v 1.674295 c 0,3.674148 2.534697,6.069321 6.3948782,6.069321 1.53477,0 2.976524,-0.39532 4.488041,-1.232468 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.2541px;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.581352;fill:#0066b3;fill-opacity:1"
+       id="path844" />
+    <path
+       d="m 21.990543,24.293094 h 2.930017 c 2.697476,0 4.836853,-1.744057 4.836853,-3.953197 0,-2.185885 -1.976599,-3.883435 -4.511296,-3.883435 h -5.604238 c -0.488336,0 -0.744131,0.186033 -0.744131,0.581353 0,0.39532 0.255795,0.604606 0.744131,0.604606 h 1.139451 v 10.720141 h -1.139451 c -0.488336,0 -0.744131,0.209287 -0.744131,0.581352 0,0.39532 0.255795,0.604607 0.744131,0.604607 h 5.44146 c 0.488336,0 0.767385,-0.209287 0.767385,-0.604607 0,-0.372065 -0.255795,-0.581352 -0.767385,-0.581352 h -3.092796 z m 0,-1.185959 v -5.464714 h 3.325337 c 1.790565,0 3.23232,1.209214 3.23232,2.697476 0,1.511517 -1.604533,2.767238 -3.557878,2.767238 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.2541px;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.581352;fill:#0066b3;fill-opacity:1"
+       id="path846" />
+    <path
+       d="m 37.384722,17.642421 h 2.116124 c 0.488336,0 0.744131,-0.209286 0.744131,-0.604606 0,-0.39532 -0.255795,-0.581353 -0.744131,-0.581353 h -5.44146 c -0.488336,0 -0.744131,0.186033 -0.744131,0.581353 0,0.39532 0.255795,0.604606 0.744131,0.604606 h 2.116123 v 10.720141 h -2.116123 c -0.488336,0 -0.744131,0.209287 -0.744131,0.581352 0,0.39532 0.255795,0.604607 0.744131,0.604607 H 44.68651 v -4.720582 c 0,-0.465082 -0.209287,-0.720878 -0.604607,-0.720878 -0.395319,0 -0.604606,0.255796 -0.604606,0.720878 v 3.534623 h -6.092575 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.2541px;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.581352;fill:#0066b3;fill-opacity:1"
+       id="path848" />
+  </g>
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs14">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect844"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect865"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect912"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect884"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect882"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 24 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="48 : 24 : 1"
+       inkscape:persp3d-origin="24 : 16 : 1"
+       id="perspective839" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect843"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect847"
+       is_visible="true"
+       lpeversion="1" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     id="namedview12"
+     showgrid="false"
+     inkscape:zoom="8.0000005"
+     inkscape:cx="25.386091"
+     inkscape:cy="17.498906"
+     inkscape:window-x="1366"
+     inkscape:window-y="37"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10"
+     inkscape:document-rotation="0" />
+  <rect
+     style="opacity:0.999;fill:none;fill-rule:evenodd;stroke:#0066b3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:8;stroke-dasharray:none"
+     id="rect847"
+     width="43.945904"
+     height="43.709965"
+     x="1.9895421"
+     y="2.3413129"
+     ry="2.9129109" />
+</svg>

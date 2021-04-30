@@ -1,0 +1,24 @@
+' Gambas class file
+
+Public Sub Form_Open()
+
+  Dim svg As String
+  Dim pic As Picture
+
+  'svg = dsk.Contrary("./svg/class.svg", "#0066b3")
+  'pic = Image.FromString(svg).Stretch(80, 80).Picture
+  'tobLogo.Picture = pic
+
+  svg = dsk.Contrary("./svg/git.svg", "#0066b3")
+  pic = Image.FromString(svg).Stretch(tobGIT.W - 4, tobGIT.H - 4).Picture
+  tobGIT.Picture = pic
+
+  svg = dsk.Contrary("./svg/gpl.svg", "#0066b3")
+  pic = Image.FromString(svg).Stretch(tobGPL.W - 4, tobGPL.H - 4).Picture
+  tobGPL.Picture = pic
+
+  svg = dsk.Contrary("./svg/class.svg", "#0066b3")
+  pic = Image.FromString(svg).Stretch(256, 256).Picture
+  Me.Icon = pic
+
+End

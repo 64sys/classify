@@ -1,0 +1,530 @@
+' Gambas class file
+
+Public aFiles As New String[]
+Public cClasses As New Collection
+Public cSystem As New Collection
+Public cInfo As Collection
+Public aModes As String[] = [("Class"), ("Component")]
+
+Public Sub Form_Open()
+
+  ' Dim sVar As String
+  ' Dim aKeywords As New String[]
+  '
+  ' For Each sVar In System
+  '   aKeywords.Add(sVar)
+  ' Next
+  '
+  cSystem.Add(System.Keywords, "Keywords")
+  'cSystem.Add(System.k.Copy(), "Subroutines")
+  cSystem.Add(System.Datatypes.Copy(), "Datatypes")
+
+  'SInfo()
+  cInfo = GInfo()
+  LoadIcons()
+  LoadTree()
+  selectMode("class")
+
+  LoadSystem()
+  'LoadVersions()
+  'tobModes.Text = aModes[0]
+  Panel1.Layout = [1, 1]
+
+End
+
+'' This sub load tha dat on gridview and treeview
+
+Public Sub LoadTree(Optional sFilter As String)
+
+  Dim x As Integer
+  Dim vData As Variant
+  Dim bValid As Boolean
+  Dim sText As Variant
+  Dim r As Integer
+
+  TreeView1.Clear
+  For Each vData In cInfo
+    If sFilter <> "" Then
+      bValid = cInfo.Key Like "*" & sFilter & "*#*"
+
+      If bValid Then
+        If Not TreeView1.Exist(vData["Component"]) Then
+          TreeView1.Add(vData["Component"], vData["Component"])
+        Endif
+        If Not TreeView1.Exist(cInfo.Key) Then
+          TreeView1.Add(cInfo.Key, vData["Name"],, vData["Component"])
+        Endif
+      Endif
+    Else
+      If Not TreeView1.Exist(vData["Component"]) Then
+        TreeView1.Add(vData["Component"], vData["Component"])
+      Endif
+      If Not TreeView1.Exist(cInfo.Key) Then
+        TreeView1.Add(cInfo.Key, vData["Name"],, vData["Component"])
+      Endif
+    Endif
+
+  Next
+
+  GridView1.Clear
+  GridView1.Columns.Count = 3
+  GridView1.Rows.Count = cInfo.Count
+  'GridView1.Header = GridView1.Horizontal
+
+  GridView1.Columns[0].Width = 0
+  GridView1.Columns[0].Resizable = False
+  GridView1.Columns[1].Width = 75
+  GridView1.Columns[1].Title = ("Component")
+  GridView1.Columns[2].Width = 75
+  GridView1.Columns[2].Title = ("Class")
+  GridView1.Columns[2].Expand = True
+
+  r = 0
+  For Each sText In cInfo
+    If sFilter <> "" Then
+
+      bValid = cInfo.Key Like "*#*" & sFilter & "*"
+
+      If bValid Then
+        GridView1[r, 0].Text = cInfo.Key
+        GridView1[r, 1].Text = " " & Split(cInfo.Key, "#")[0]
+        GridView1[r, 2].Text = Split(cInfo.Key, "#")[1]
+        Inc r
+      Else
+        Dec GridView1.Rows.Count
+      Endif
+
+    Else
+      GridView1[r, 0].Text = cInfo.Key
+      GridView1[r, 1].Text = " " & Split(cInfo.Key, "#")[0]
+      GridView1[r, 2].Text = Split(cInfo.Key, "#")[1]
+      Inc r
+    Endif
+  Next
+
+End
+
+Public Function SIinfo() As Collection
+
+  Dim c As Class
+  Dim aData As New String[]
+  Dim sComp As String
+  Dim sParent As String
+  Dim s As String
+  Dim sFile As String
+  Dim sClass As String
+  Dim iAsc As Integer
+  Dim sKind As String
+  Dim info As New JSONCollection
+
+  For Each c In radClass
+    If Not IsNull(c.Component) Then
+      iAsc = Asc(String.Mid(c.Name, 1, 1))
+      If iAsc > 64 And iAsc < 91 Then
+        If Not IsNull(c.Parent) Then
+          sParent = c.Parent.Name
+        Else
+          sParent = ""
+        Endif
+        If c.Symbols.Count > 0 Then
+          '' Add class name to list
+          If Not cClasses.Exist(c.Name) Then
+            info.Clear
+            info.Add(c.Component.Name, "Component")
+            info.Add(c.Count, "Count")
+            info.Add(c.Hidden, "Hidden")
+            info.Add(c.Instance, "Instance")
+            info.Add(c.Name, "Name")
+            info.Add(c.Native, "Native")
+            info.Add(c.Parent, "Parent")
+
+            cClasses.Add(["Info": info.Copy(), "Variable": [""], "Constant": [""], "Event": [""], "Property": [""], "Method": [""]], c.Name)
+
+          Endif
+
+          For Each s In c.Symbols
+            If s <> "." Then 'Symbol name "." crash
+              Select c[s].Kind
+                Case radClass.Variable
+                  cClasses[c.Name]["Variable"].Add(c[s].Name)
+
+                Case radClass.Constant
+                  cClasses[c.Name]["Constant"].Add(c[s].Name)
+
+                Case radClass.Event
+                  cClasses[c.Name]["Event"].Add(c[s].Name)
+
+                Case radClass.Property
+                  cClasses[c.Name]["Property"].Add(c[s].Name)
+
+                Case radClass.Method
+                  cClasses[c.Name]["Method"].Add(c[s].Name)
+
+              End Select
+            Endif
+          Next
+        Endif
+      Endif
+    Endif
+  Next
+
+  sFile = User.Home &/ radSystem.FullVersion & ".txt"
+  aData.Sort
+  File.Save(sFile, aData.Join("\n"))
+
+  Return cClasses
+
+End
+
+'' Load system properties, gambas version etc.
+
+Public Sub LoadSystem()
+
+  Dim cVar As Variant
+  Dim sKeyword As String
+
+  Label1.Text = ("Version") & "  <b>" & System.FullVersion & "</b>"
+  TreeView3.Clear
+  TreeView3.Add("system", ("System"))
+  TreeView3.Add("gambas", "Gambas: " & System.FullVersion,, "system")
+
+  For Each cVar In cSystem
+    For Each sKeyword In cVar
+      If Not TreeView3.Exist(cSystem.Key & "#" & sKeyword) Then
+        If Not TreeView3.Exist(cSystem.Key) Then
+          TreeView3.Add(cSystem.Key, cSystem.Key,, "gambas")
+        Endif
+        TreeView3.Add(cSystem.Key & "#" & sKeyword, sKeyword,, cSystem.Key)
+      Endif
+    Next
+  Next
+
+  TreeView3["system"].Expanded = True
+  TreeView3["gambas"].Expanded = True
+
+End
+
+Public Sub LoadVersions()
+
+  Dim sVar As String
+  Dim sFile As String
+  Dim chk As CheckBox
+  Dim sName As String
+
+  For Each sFile In RDir("./versions", "*.txt", gb.File)
+    chk = New CheckBox(Panel1)
+    sName = File.BaseName(sFile)
+    With chk
+      .Tag = "./versions" &/ sFile
+      .Name = sName
+      .Text = sName
+      .H = 32
+    End With
+  Next
+
+End
+
+Public Sub LoadIcons()
+
+  Dim svg As String
+  Dim pic As Picture
+
+  svg = dsk.Contrary("./svg/about.svg", "#0066b3")
+  pic = Image.FromString(svg).Stretch(tobAbout.W - 4, tobAbout.H - 4).Picture
+  tobAbout.Picture = pic
+
+  svg = dsk.Contrary("./svg/class.svg", "#0066b3")
+  pic = Image.FromString(svg).Stretch(256, 256).Picture
+  Me.Icon = pic
+
+End
+
+Public Sub Compare()
+
+  Dim xControl As Object
+  Dim aCurrent As New String[]
+  Dim aEarlier As New String[]
+  Dim aChanges As New String[]
+  Dim sData As String
+  Dim sChanges As String
+  Dim sEarlier As String
+  Dim i As Integer
+  Dim sSearch As String
+  Dim cChanges As New Collection
+  Dim sOut As String
+  Dim vClas As Variant
+  Dim sProp As String
+  Dim cTmp As Class
+  Dim sHidden As String
+
+  aFiles.Clear
+
+  For Each xControl In Panel1.Children
+    If Object.Type(xControl) = "CheckBox" Then
+      If xControl.Value = True Then
+        aFiles.Add(xControl.Tag)
+      Endif
+    Endif
+
+  Next
+
+  aFiles.Sort
+  aFiles.Reverse
+  If aFiles.Count = 2 Then
+    sChanges = User.Home &/ File.BaseName(aFiles[0]) & "-vs-" & File.BaseName(aFiles[1]) & ".txt"
+
+    aCurrent = Split(File.Load(aFiles[0]), "\n")
+    For i = 0 To aCurrent.Max
+      If Split(aCurrent[i], "\t")[2] = radClass.Property Then
+        aCurrent[i] = Split(aCurrent[i], "\t")[0] & "\t" & Split(aCurrent[i], "\t")[3] & "\t" & "[Property]"
+      Endif
+    Next
+
+    aEarlier = Split(File.Load(aFiles[1]), "\n")
+    For i = 0 To aEarlier.Max
+      If Split(aEarlier[i], "\t")[2] = radClass.Property Then
+        aEarlier[i] = Split(aEarlier[i], "\t")[0] & "\t" & Split(aEarlier[i], "\t")[3] & "\t" & "[Property]"
+      Endif
+    Next
+
+  Else
+    Message(("Select two versions please"))
+  Endif
+
+  '' Check new properties
+  For i = 0 To aCurrent.Max
+    If InStr(aCurrent[i], "\t[Property]") > 0 Then
+
+      If aEarlier.Exist(aCurrent[i]) = False Then
+        If cChanges.Exist(Split(aCurrent[i], "\t")[0]) = False Then
+          cChanges.Add([Split(aCurrent[i], "\t")[1] & " (New)" & sHidden], Split(aCurrent[i], "\t")[0])
+        Else
+          cChanges[Split(aCurrent[i], "\t")[0]].Add(Split(aCurrent[i], "\t")[1] & " (New)" & sHidden)
+        Endif
+      Else
+        If cChanges.Exist(Split(aCurrent[i], "\t")[0]) = False Then
+          cChanges.Add([Split(aCurrent[i], "\t")[1]], Split(aCurrent[i], "\t")[0])
+        Else
+          cChanges[Split(aCurrent[i], "\t")[0]].Add(Split(aCurrent[i], "\t")[1] & sHidden)
+        Endif
+      Endif
+    Endif
+  Next
+
+  '' Check deleted properties
+  For i = 0 To aEarlier.Max
+    If InStr(aEarlier[i], "\t[Property]") > 0 Then
+      If aCurrent.Exist(aEarlier[i]) = False Then
+        If cChanges.Exist(Split(aEarlier[i], "\t")[0]) = False Then
+          cChanges.Add([Split(aEarlier[i], "\t")[1] & " (Deleted)" & sHidden], Split(aEarlier[i], "\t")[0])
+        Else
+          cChanges[Split(aEarlier[i], "\t")[0]].Add(Split(aEarlier[i], "\t")[1] & " (Deleted)" & sHidden)
+        Endif
+
+      Else
+
+        cTmp = radClass[Split(aEarlier[i], "\t")[0]]
+        If cTmp[Split(aEarlier[i], "\t")[1]].Hidden Then
+          sHidden = " [Hidden]"
+        Else
+          sHidden = ""
+        Endif
+
+        If cTmp.Name = "MovieBox" Then
+          Print "x"
+          If Split(aEarlier[i], "\t")[1] = "Path" Then
+            Print "x"
+          Endif
+        Endif
+
+        cChanges[Split(aEarlier[i], "\t")[0]].Add(Split(aEarlier[i], "\t")[1] & sHidden)
+
+      Endif
+    Endif
+  Next
+
+  If cChanges.Count > 0 Then
+    For Each vClas In cChanges
+      sOut &= cChanges.Key & "\n"
+      For Each sProp In vClas
+        sOut &= "." & sProp & "\n"
+      Next
+      sOut &= "\n"
+    Next
+
+    File.Save(sChanges, sOut)
+    Desktop.Open(sChanges)
+  Else
+    Message(("No changes there"))
+  Endif
+
+End
+
+Public Sub menuapp_Click()
+
+  Select Last.Tag
+    Case "compare"
+      Compare()
+    Case "class", "component", "system"
+      selectMode(Last.Tag)
+    Case "about"
+      FAbout.ShowModal()
+
+  End Select
+
+End
+
+Public Sub TreeView1_Select()
+
+  If TreeView1.Current.Key Like "*#*" Then
+    React3(TreeView1.Current.Key)
+  Endif
+
+End
+
+Public Sub GridView1_Select()
+
+  React3(GridView1[GridView1.Row, 0].Text)
+
+End
+
+Public Sub React3(selClass As String)
+
+  Dim vClass As Variant
+  Dim cKind As Collection = ["c": ("Constants"), "p": ("Properties"), "m": ("Methods"), "e": ("Events")]
+  Dim vProp As Variant
+  Dim sKind As String
+
+  vClass = cInfo[selClass]
+
+  TreeView2.Clear
+
+  TreeView2.Add(vClass["Component"], vClass["Component"])
+  TreeView2.Add(vClass["Name"], vClass["Name"],, vClass["Component"])
+
+  For Each vProp In vClass["Symbols"]
+    If cKind.Exist(Lower(vProp["Kind"])) Then
+      sKind = cKind[Lower(vProp["Kind"])]
+      If Not TreeView2.Exist(sKind) Then
+        TreeView2.Add(sKind, sKind,, vClass["Name"])
+      Endif
+      TreeView2.Add(vProp["Name"], vProp["Name"],, sKind)
+    Endif
+  Next
+  TreeView2[vClass["Component"]].Expanded = True
+  TreeView2[vClass["Name"]].Expanded = True
+  For Each sKind In cKind
+    If TreeView2.Exist(sKind) Then
+      TreeView2[sKind].Expanded = True
+    Endif
+  Next
+
+End
+
+Public Function GInfo() As Collection
+
+  Dim sInfoPath As String = "/usr/share/gambas3/info"
+  Dim aFiles As String[]
+  Dim sFile As String
+  Dim sComponent As String
+  Dim cData As New Collection
+  Dim aParts As String[]
+  Dim sPart As String
+  Dim aRaw As String[]
+  Dim aLines As New String[]
+  Dim sClass As String
+  Dim sClass2 As String
+  Dim sClass3 As String
+  Dim i As Integer
+  Dim x As Integer
+  Dim sPropName As String
+  Dim sPropType As String
+  Dim sPropData As String
+  Dim sProp3 As String
+  Dim cProp As New Collection
+  Dim cTmp As New Collection
+  Dim sLine As String
+  Dim aRaw2 As String[]
+  Dim sRaw As String
+
+  aFiles = Dir(sInfoPath, "*.info").Sort()
+
+  For Each sFile In aFiles
+    sComponent = Left(sFile, -5)
+    aRaw = Split(File.Load(sInfoPath &/ sFile), "\n")
+    For Each sLine In aRaw
+      If Left(sLine) <> "'" Then
+        aLines.Add(sLine)
+      Endif
+    Next
+    sRaw = aLines.Join("\n")
+    aRaw.Clear
+    aParts = Split(sRaw, "#")
+    For i = 0 To aParts.Max
+      If aParts[i] <> "" Then
+        aRaw2 = Split(aParts[i], "\n")
+        aLines.Clear
+        For Each sLine In aRaw2
+          If Left(sLine) <> "'" Then
+            aLines.Add(sLine)
+          Endif
+        Next
+        sClass = aLines[0]
+        sClass2 = aLines[1]
+        sClass3 = aLines[2]
+        For x = 3 To aLines.Max - 4 Step 4
+          If aLines[x] <> "" Then
+            cProp.Add(aLines[x], "Name")
+            cProp.Add(aLines[x + 1], "Kind")
+            cProp.Add(aLines[x + 2], "Type")
+            cTmp.Add(cProp.Copy(), aLines[x])
+            cProp.Clear
+          Endif
+        Next
+        cData.Add(["Name": sClass, "Component": sComponent, "Symbols": cTmp.Copy()], sComponent & "#" & sClass)
+        cTmp.Clear
+      Endif
+    Next
+
+  Next
+
+  Return cData
+
+End
+
+Public Sub menuapp_Change()
+
+  Select Last.Tag
+    Case "search"
+      LoadTree(Last.Text)
+  End Select
+
+End
+
+Public Sub selectMode(sMode As String)
+
+  Select sMode
+    Case "class"
+      TreeView1.Visible = False
+      GridView1.Visible = True
+      TreeView3.Visible = False
+      TreeView2.Clear
+
+    Case "component"
+      TreeView1.Visible = True
+      GridView1.Visible = False
+      TreeView3.Visible = False
+      TreeView2.Clear
+
+    Case "system"
+      TreeView1.Visible = False
+      GridView1.Visible = False
+      TreeView3.Visible = True
+      TreeView2.Clear
+  End Select
+
+End
+
+Public Sub TreeView3_Select()
+
+End

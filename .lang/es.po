@@ -1,0 +1,59 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: classify 3.15.2\n"
+"POT-Creation-Date: 2021-04-30 18:39 UTC\n"
+"PO-Revision-Date: 2021-04-30 18:40 UTC\n"
+"Last-Translator: belmotek <info@belmotek.net>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .project:1
+msgid "classify"
+msgstr "Clasificar"
+
+#: FMain.class:7
+msgid "Class"
+msgstr "Clase"
+
+#: FMain.class:7
+msgid "Component"
+msgstr "Componente"
+
+#: FMain.class:185
+msgid "Version"
+msgstr "Versión"
+
+#: FMain.class:275
+msgid "Select two versions please"
+msgstr "Por favor, seleccione dos versiones"
+
+#: FMain.class:342
+msgid "No changes there"
+msgstr "Sin cambios"
+
+#: FMain.class:383
+msgid "Constants"
+msgstr "Constantes"
+
+#: FMain.class:383
+msgid "Events"
+msgstr "Eventos"
+
+#: FMain.class:383
+msgid "Methods"
+msgstr "Métodos"
+
+#: FMain.class:383
+msgid "Properties"
+msgstr "Propiedades"
+
+#: FMain.form:50
+msgid "System"
+msgstr "Sistema"
+
+#: FMain.form:58
+msgid "Search by"
+msgstr "Buscar por"

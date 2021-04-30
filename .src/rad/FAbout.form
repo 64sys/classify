@@ -1,0 +1,45 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  Arrangement = Arrange.Vertical
+  { Panel1 Panel
+    MoveScaled(2,3,57,57)
+    Expand = True
+    Arrangement = Arrange.Vertical
+    { Panel2 Panel
+      MoveScaled(1,2,55,11)
+      Arrangement = Arrange.Horizontal
+      { TextLabel1 TextLabel
+        MoveScaled(26,1,23,8)
+        #Translate = False
+        Font = Font["+7"]
+        Expand = True
+        Text = "Classify"
+        Alignment = Align.Center
+      }
+    }
+    { TextLabel2 TextLabel
+      MoveScaled(2,15,52,28)
+    }
+    { pnlIcons Panel
+      MoveScaled(1,48,55,8)
+      Arrangement = Arrange.Horizontal
+      { Spring1 Spring
+        MoveScaled(0,0,4,4)
+      }
+      { tobGPL ToolButton
+        MoveScaled(6,0,8,8)
+      }
+      { Spring4 Spring
+        MoveScaled(19,3,4,4)
+      }
+      { tobGIT ToolButton
+        MoveScaled(37,0,8,8)
+      }
+      { Spring5 Spring
+        MoveScaled(47,1,4,4)
+      }
+    }
+  }
+}
