@@ -73,3 +73,6 @@ Translate=1
 Language=en_US
 Vendor=belmotek
 Packager=1
+GambasVersion=3.15
+WebSite=https://github.com/belmotek/classify
+CreateMenu=1
