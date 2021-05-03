@@ -21,7 +21,7 @@
       Tag = "component"
       Text = ("Component")
     }
-    { ButtonBox1 ButtonBox menuapp
+    { ButtonBox1 TextBox menuapp
       Name = "ButtonBox1"
       MoveScaled(49,0,16,5)
       Background = Color.TextBackground
@@ -29,9 +29,8 @@
       ToolTip = ("Search by")
       Expand = True
       Alignment = Align.Center
+      Placeholder = "Enter the search text here"
       Border = False
-      Button = False
-      ClearButton = True
     }
     { radSystem RadioButton menuapp
       Name = "radSystem"

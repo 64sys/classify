@@ -1,5 +1,27 @@
 ' Gambas class file
 
+'
+' Classify
+' Class Explorer for Gambas
+'
+' Copyright (C) Martín Belmonte
+'
+' This program is free software; you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation; either version 2 of the License, or
+' (at your option) any later version.
+'
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+'
+' You should have received a copy of the GNU General Public License
+' along with this program; if not, write to the Free Software
+' Foundation, Inc., 51 Franklin St, Fifth Floor,
+' Boston, MA  02110-1301  USA
+'
+
 Public aFiles As New String[]
 Public cClasses As New Collection
 Public cSystem As New Collection
@@ -8,26 +30,15 @@ Public aModes As String[] = [("Class"), ("Component")]
 
 Public Sub Form_Open()
 
-  ' Dim sVar As String
-  ' Dim aKeywords As New String[]
-  '
-  ' For Each sVar In System
-  '   aKeywords.Add(sVar)
-  ' Next
-  '
   cSystem.Add(System.Keywords, "Keywords")
-  'cSystem.Add(System.k.Copy(), "Subroutines")
   cSystem.Add(System.Datatypes.Copy(), "Datatypes")
 
-  'SInfo()
   cInfo = GInfo()
   LoadIcons()
   LoadTree()
   selectMode("class")
 
   LoadSystem()
-  'LoadVersions()
-  'tobModes.Text = aModes[0]
   Panel1.Layout = [1, 1]
 
 End
@@ -36,7 +47,6 @@ End
 
 Public Sub LoadTree(Optional sFilter As String)
 
-  '  Dim x As Integer
   Dim vData As Variant
   Dim bValid As Boolean
   Dim sText As Variant
@@ -206,7 +216,6 @@ End
 
 Public Sub LoadVersions()
 
-  'Dim sVar As String
   Dim sFile As String
   Dim chk As CheckBox
   Dim sName As String
@@ -230,7 +239,7 @@ Public Sub LoadIcons()
   Dim pic As Picture
 
   svg = dsk.Contrary("./svg/about.svg", "#0066b3")
-  pic = Image.FromString(svg).Stretch(tobAbout.W - 4, tobAbout.H - 4).Picture
+  pic = Image.FromString(svg).Stretch(30, 30).Picture
   tobAbout.Picture = pic
 
   svg = dsk.Contrary("./svg/class.svg", "#0066b3")
@@ -244,12 +253,8 @@ Public Sub Compare()
   Dim xControl As Object
   Dim aCurrent As New String[]
   Dim aEarlier As New String[]
-  'Dim aChanges As New String[]
-  'Dim sData As String
   Dim sChanges As String
-  'Dim sEarlier As String
   Dim i As Integer
-  'Dim sSearch As String
   Dim cChanges As New Collection
   Dim sOut As String
   Dim vClas As Variant
@@ -424,12 +429,10 @@ End
 Public Function GInfo() As Collection
 
   Dim sInfoPath As String = "/usr/share/gambas3/info"
-  'Dim aFiles As String[]
   Dim sFile As String
   Dim sComponent As String
   Dim cData As New Collection
   Dim aParts As String[]
-  'Dim sPart As String
   Dim aRaw As String[]
   Dim aLines As New String[]
   Dim sClass As String
@@ -437,10 +440,6 @@ Public Function GInfo() As Collection
   Dim sClass3 As String
   Dim i As Integer
   Dim x As Integer
-  'Dim sPropName As String
-  'Dim sPropType As String
-  'Dim sPropData As String
-  'Dim sProp3 As String
   Dim cProp As New Collection
   Dim cTmp As New Collection
   Dim sLine As String
