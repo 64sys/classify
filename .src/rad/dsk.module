@@ -97,7 +97,7 @@ Public Function FileChooser(Optional strInputPath As String, Optional stxExt As 
     strInputPath = User.Home
   Endif
 
-  Dialog.Title = ("Select File")
+  Dialog.Title = ("Select file")
   Dialog.Filter = Null
 
   If stxExt Then

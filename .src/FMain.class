@@ -30,8 +30,16 @@ Public aModes As String[] = [("Class"), ("Component")]
 
 Public Sub Form_Open()
 
+  Dim sKeywords As String
+
   cSystem.Add(System.Keywords, "Keywords")
   cSystem.Add(System.Datatypes.Copy(), "Datatypes")
+
+  sKeywords = User.Home &/ "gambas-Keywords.json"
+
+  If Not Exist(sKeywords) Then
+    File.Save(sKeywords, JSON.Encode(System.Keywords))
+  Endif
 
   cInfo = GInfo()
   LoadIcons()
@@ -40,6 +48,8 @@ Public Sub Form_Open()
 
   LoadSystem()
   Panel1.Layout = [1, 1]
+
+  TextBox1.Placeholder = ("Enter the search text here")
 
 End
 

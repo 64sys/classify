@@ -5,22 +5,22 @@ msgstr ""
 "POT-Creation-Date: 2021-05-13 22:43 UTC\n"
 "PO-Revision-Date: 2021-05-14 00:42 UTC\n"
 "Last-Translator: Tradukisto\n"
-"Language: es\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .project:1
 msgid "Classify"
-msgstr "clasificar"
+msgstr "Classificar"
 
 #: .project:2
 msgid "Class Explorer for Gambas"
-msgstr "Explorador de clases para Gambas"
+msgstr "Explorador de Classe para Gambas"
 
 #: FMain.class:29
 msgid "Class"
-msgstr "Clase"
+msgstr "Classe"
 
 #: FMain.class:29
 msgid "Component"
@@ -28,19 +28,19 @@ msgstr "Componente"
 
 #: FMain.class:52
 msgid "Enter the search text here"
-msgstr "Ingrese el texto de búsqueda aquí"
+msgstr "Insira o texto de pesquisa aqui"
 
 #: FMain.class:206
 msgid "Version"
-msgstr "Versión"
+msgstr "Versão"
 
 #: FMain.class:306
 msgid "Select two versions please"
-msgstr "Por favor, seleccione dos versiones"
+msgstr "Selecione duas versões, por favor"
 
 #: FMain.class:373
 msgid "No changes there"
-msgstr "Sin cambios"
+msgstr "Sem mudanças lá"
 
 #: FMain.class:409
 msgid "Constants"
@@ -56,11 +56,11 @@ msgstr "Métodos"
 
 #: FMain.class:409
 msgid "Properties"
-msgstr "Propiedades"
+msgstr "Propriedades"
 
 #: FMain.form:52
 msgid "Search by"
-msgstr "Buscar por"
+msgstr "Procurar por"
 
 #: FMain.form:62
 msgid "System"
@@ -68,16 +68,16 @@ msgstr "Sistema"
 
 #: dsk.module:100
 msgid "Select file"
-msgstr "Seleccionar archivo"
+msgstr "Selecione o arquivo"
 
 #: dsk.module:109
 msgid "Filter"
-msgstr "Filtrar"
+msgstr "Filtro"
 
 #: dsk.module:133
 msgid "Select directory"
-msgstr "Seleccionar directorio"
+msgstr "Selecione o diretório"
 
 #: dsk.module:190
 msgid "Hi"
-msgstr "Hola"
+msgstr "Oi"
